@@ -119,6 +119,7 @@ angular.module("ngDragDrop",[])
                 var dragChannel = "";
                 var dragEnterClass = attr.dragEnterClass || "on-drag-enter";
                 var dragHoverClass = attr.dragHoverClass || "on-drag-hover";
+                var dropValidClass = attr.dropValidClass || "on-drop-valid";
 
                 function onDragOver(e) {
                     if (e.preventDefault) {
@@ -186,6 +187,8 @@ angular.module("ngDragDrop",[])
                             }
                         }
 
+                        element.addClass(dropValidClass);
+
                         element.bind("dragover", onDragOver);
                         element.bind("dragenter", onDragEnter);
                         element.bind("dragleave", onDragLeave);
@@ -208,6 +211,7 @@ angular.module("ngDragDrop",[])
                         element.unbind("drop", onDrop);
                         element.removeClass(dragHoverClass);
                         element.removeClass(dragEnterClass);
+                        element.removeClass(dropValidClass);
                     }
                 });
 
